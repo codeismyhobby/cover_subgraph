@@ -1,0 +1,31 @@
+specVersion: 0.0.2
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Cover
+    network: mainnet
+    source:
+      address: "0x5d8d9f5b96f4438195be9b99eee6118ed4304286"
+      abi: Cover
+      startBlock: 11291458
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - OwnershipTransferred
+        - Transfer
+        - Transfeer
+      abis:
+        - name: Cover
+          file: Cover\abis\Cover.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: Cover\Cover.wasm

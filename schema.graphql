@@ -1,0 +1,14 @@
+type ExampleEntity @entity {
+  id: ID!
+  count: BigInt!
+  owner: Bytes! # address
+  spender: Bytes! # address
+}
+
+type Transfeer @entity {
+  id: ID!
+  value: BigInt!
+  from: Bytes!
+  to: Bytes!
+  timestamp: BigInt
+}
